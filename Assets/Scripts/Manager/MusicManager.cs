@@ -12,9 +12,13 @@ public class MusicManager : RingSingleton<MusicManager>
         PlayerBackGround();
     }
 
-    public void PlayAudio_Grenade()
+    public void PlayAudio_AddBrick()
     {
-        //_musicController.audioSource_Grenade.PlayOneShot(_musicController.audioClip_Grenade);
+        _musicController.audioSource_Brick.PlayOneShot(_musicController.audioClip_AddBrick);
+    }
+    public void PlayAudio_RemoveBrick()
+    {
+        _musicController.audioSource_Brick.PlayOneShot(_musicController.audioClip_RemoveBrick);
     }
     public void PlayerBackGround()
     {

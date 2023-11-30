@@ -17,4 +17,8 @@ public class UiManager : RingSingleton<UiManager>
     {
         
     }
+    public void TurnOnUIInGame()
+    {
+
+    }
 }
