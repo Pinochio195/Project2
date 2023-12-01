@@ -28,6 +28,7 @@ public class SpawnBrick : MonoBehaviour
                     int randomIndex = Random.Range(0, _prefabBrick.Count);
                     GameObject _brick = LeanPool.Spawn(_prefabBrick[randomIndex], new Vector3(transform.position.x + 1.5f * j, transform.position.y, transform.position.z + 1.5f * i), Quaternion.identity, transform);
                     GameManager.Instance._gameController._listBrickSpawnAddBrick.Add(_brick.GetComponent<AddBrick>());
+                    
                 }
             }
         }

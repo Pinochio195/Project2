@@ -13,6 +13,8 @@ public class BotController : MonoBehaviour, CharacterInterface
     public RunState runState;
     public IdleState idleState;
     public GoWinState goState;
+    public FallingState fallingState;
+    [SerializeField] public Rigidbody _rigidbody;
 
     private void Start()
     {
@@ -21,15 +23,25 @@ public class BotController : MonoBehaviour, CharacterInterface
         runState = new RunState(this, stateMachine);
         idleState = new IdleState(this, stateMachine);
         goState = new GoWinState(this, stateMachine);
+        fallingState = new FallingState(this, stateMachine);
         stateMachine.Initialize(idleState);
     }
 
+    public void FallBackDown()
+    {
+        _rigidbody.velocity = Vector3.up * 500;
+        Debug.Log(_rigidbody.velocity);
+    }
 
     #region State Machine
 
     public virtual void Update()
     {
         stateMachine.currentState.LogicUpdate();
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            FallBackDown();
+        }
     }
 
     public virtual void FixedUpdate()
@@ -65,45 +77,24 @@ public class BotController : MonoBehaviour, CharacterInterface
         }
     }
 
-    /*private void SetDestination(Vector3 destination)
-    {
-        _botController.agent.SetDestination(destination);
-    }*/
 
     #endregion State Machine
 
-    /*  public void AddBrick(Transform _brick, List<GameObject> trails, ParticleSystem trail)
-      {
-          */
-    /*_botController.inDexDotWeen++;
-          float index = _botController.inDexDotWeen * 0.34f;
-
-          _brick.transform.SetParent(_botController._parentListTransform);
-          _brick.transform.DOLocalMove(new Vector3(0, index, 0), 0.25f).SetEase(Ease.InBounce).SetUpdate(true).OnComplete(() =>
-          {
-              Debug.Log(_botController.inDexDotWeen);
-              trails.ForEach(trail => { trail.gameObject.SetActive(false); });
-              _brick.transform.localEulerAngles = new Vector3(0, 90, 0);
-              _botController._listBringBrick.Add(_brick.gameObject);
-              MusicManager.Instance.PlayAudio_AddBrick();
-              Vibrate();
-              trail.Play();
-          });*//*
-      }*/
-    public void AddBrick(Transform _brick, List<GameObject> trails, ParticleSystem trail)
+    public void AddBrick(AddBrick addBrick,MeshRenderer mesh, List<GameObject> trails, ParticleSystem trail)
     {
         // Đặt tên biến rõ ràng hơn
         int brickIndex = _botController.inDexDotWeen;
-
+        mesh.material = _botController._materialPlayer;
         float index = brickIndex * 0.34f;
-        _brick.transform.SetParent(_botController._parentListTransform);
+        addBrick.transform.SetParent(_botController._parentListTransform);
 
-        _brick.transform.DOLocalMove(new Vector3(0, index, 0), 0.25f).SetEase(Ease.InQuint).SetUpdate(true).OnComplete(() =>
+        addBrick.transform.DOLocalMove(new Vector3(0, index, 0), 0.25f).SetEase(Ease.InQuint).SetUpdate(true).OnComplete(() =>
         {
             trails.ForEach(t => t.gameObject.SetActive(false));
-            _brick.transform.localEulerAngles = new Vector3(0, 90, 0);
-
-            _botController._listBringBrick.Add(_brick.gameObject);
+            addBrick._rigidbody.transform.localEulerAngles = new Vector3(0, 90, 0);
+            addBrick._rigidbody.isKinematic = true;
+            addBrick._rigidbody.useGravity = false;
+            _botController._listBringBrick.Add(addBrick);
             MusicManager.Instance.PlayAudio_AddBrick();
             Vibrate();
             trail.Play();
@@ -115,10 +106,13 @@ public class BotController : MonoBehaviour, CharacterInterface
 
     public void RemoveBrick()
     {
-        MusicManager.Instance.PlayAudio_RemoveBrick();
-        LeanPool.Despawn(_botController._listBringBrick[_botController._listBringBrick.Count - 1]);//lean pool
-        _botController._listBringBrick.RemoveAt(_botController._listBringBrick.Count - 1);
-        _botController.inDexDotWeen--;
+        if (_botController._listBringBrick.Count > 0)
+        {
+            MusicManager.Instance.PlayAudio_RemoveBrick();
+            LeanPool.Despawn(_botController._listBringBrick[_botController._listBringBrick.Count - 1]);//lean pool
+            _botController._listBringBrick.RemoveAt(_botController._listBringBrick.Count - 1);
+            _botController.inDexDotWeen--;
+        }
     }
 
     public void ClearBrick()

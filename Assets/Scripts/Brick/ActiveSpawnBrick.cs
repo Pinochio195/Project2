@@ -1,20 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ActiveSpawnBrick : MonoBehaviour
 {
     [SerializeField] private SpawnBrick _spawnBrick;
     [SerializeField] private Collider _collider;
+    [SerializeField] private ActiveSpawnBrick _activeSpawnBrick;
+    public bool isCheck;
+
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(Settings.Tag_Player))
+        if (other.gameObject.CompareTag(Settings.Tag_Player) || other.gameObject.CompareTag(Settings.Tag_Bot1) || other.gameObject.CompareTag(Settings.Tag_Bot2) || other.gameObject.CompareTag(Settings.Tag_Bot3))
         {
-            _spawnBrick.isCheck = true;
+            if (!isCheck)
+            {
+                isCheck = true;
+                if (_activeSpawnBrick != null)
+                {
+                    _activeSpawnBrick.isCheck = true;
+                }
+                _spawnBrick.isCheck = true;
+            }
         }
-        
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag(Settings.Tag_Player))
@@ -22,5 +31,4 @@ public class ActiveSpawnBrick : MonoBehaviour
             _collider.isTrigger = false;
         }
     }
-
 }

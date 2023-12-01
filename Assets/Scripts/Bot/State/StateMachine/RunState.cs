@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
 public class RunState : State
 {
@@ -9,32 +10,45 @@ public class RunState : State
     public override void Enter()
     {
         base.Enter();
+        botController._botController.agent.enabled = true;
         botController.SetDestination(botController.nearestBrick.transform.position);
     }
 
     public override void Exit()
     {
         base.Exit();
-        int index = GameManager.Instance._gameController._listBrickSpawnAddBrick.IndexOf(botController.nearestBrick);
-        if (index != -1)
-        {
-            GameManager.Instance._gameController._listBrickSpawnAddBrick.RemoveAt(index); // Sử dụng RemoveAt thay vì Remove
-        }
+        
     }
 
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if (botController._botController.agent.remainingDistance < 0.9f)
+        if (!botController._botController.isCheckFallDown)
         {
-            if (botController._botController._listBringBrick.Count >= 5)
+            if (!botController._botController.agent.enabled)
             {
-                stateMachine.ChangeState(botController.goState);
+                botController._botController.agent.enabled = true;
             }
-            else
+            if (botController._botController.agent.remainingDistance < 0.9f)
             {
-                stateMachine.ChangeState(botController.idleState);
+                int index = GameManager.Instance._gameController._listBrickSpawnAddBrick.IndexOf(botController.nearestBrick);
+                if (index != -1)
+                {
+                    GameManager.Instance._gameController._listBrickSpawnAddBrick.RemoveAt(index); // Sử dụng RemoveAt thay vì Remove
+                }
+                if (botController._botController._listBringBrick.Count >= 5)
+                {
+                    stateMachine.ChangeState(botController.goState);
+                }
+                else
+                {
+                    stateMachine.ChangeState(botController.idleState);
+                }
             }
+        }
+        else
+        {
+            stateMachine.ChangeState(botController.fallingState);
         }
     }
 

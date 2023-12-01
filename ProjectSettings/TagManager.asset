@@ -8,6 +8,9 @@ TagManager:
   - Brick
   - FxTemporaire
   - Bot1
+  - Bot2
+  - Bot3
+  - NotGetBrick
   layers:
   - Default
   - TransparentFX
@@ -19,9 +22,9 @@ TagManager:
   - Player
   - Brick
   - Bot
-  - 
-  - 
-  - 
+  - CheckCharacter
+  - BrickForGround
+  - BrickToFloor
   - 
   - 
   - 

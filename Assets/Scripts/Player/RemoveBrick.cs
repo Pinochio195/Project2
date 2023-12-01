@@ -30,15 +30,15 @@ public class RemoveBrick : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag(Settings.Tag_Bot1))
         {
-            if (GameManager.Instance._gameController._listBotController[0]._botController.botName.Equals( Ring.Player_Manager.Color.Blue))
+            if (GameManager.Instance._gameController._listBotController[0]._botController.botName.ToString().Equals( Ring.Player_Manager.Color.Blue.ToString()))
             {
                 _meshRenderer.material = GameManager.Instance._gameController._listMaterial[0];
             }
-            else if (GameManager.Instance._gameController._listBotController[0]._botController.botName.Equals(Ring.Player_Manager.Color.Green))
+            else if (GameManager.Instance._gameController._listBotController[0]._botController.botName.ToString().Equals(Ring.Player_Manager.Color.Green.ToString()))
             {
                 _meshRenderer.material = GameManager.Instance._gameController._listMaterial[1];
             }
-            else if (GameManager.Instance._gameController._listBotController[0]._botController.botName.Equals(Ring.Player_Manager.Color.Red))
+            else if (GameManager.Instance._gameController._listBotController[0]._botController.botName.ToString().Equals(Ring.Player_Manager.Color.Red.ToString()))
             {
                 _meshRenderer.material = GameManager.Instance._gameController._listMaterial[3];
             }

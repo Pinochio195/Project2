@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class GoWinState : State
+﻿public class GoWinState : State
 {
     public GoWinState(BotController botController, FiniteStateMachine stateMachine) : base(botController, stateMachine)
     {
@@ -8,7 +6,8 @@ public class GoWinState : State
 
     public override void Enter()
     {
-        base.Enter();
+        base.Enter(); 
+        botController._botController.agent.enabled = true;
         botController.SetDestination(GameManager.Instance._gameController._finishDestination.transform.position);
     }
 
@@ -21,11 +20,17 @@ public class GoWinState : State
     {
         base.LogicUpdate();
 
-        if (botController._botController._listBringBrick.Count <= 0)
+        if (!botController._botController.isCheckFallDown)
         {
-            stateMachine.ChangeState(botController.runState);
+            if (botController._botController._listBringBrick.Count <= 0)
+            {
+                stateMachine.ChangeState(botController.idleState);
+            }
         }
-        
+        else
+        {
+            stateMachine.ChangeState(botController.fallingState);
+        }
     }
 
     public override void PhysicsUpdate()

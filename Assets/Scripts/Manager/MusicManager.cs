@@ -9,7 +9,7 @@ public class MusicManager : RingSingleton<MusicManager>
     public MusicController _musicController;
     private void Start()
     {
-        PlayerBackGround();
+        _musicController.audioSource_Brick.volume = GameManager.Instance.GetSoundSave();
     }
 
     public void PlayAudio_AddBrick()
@@ -20,8 +20,14 @@ public class MusicManager : RingSingleton<MusicManager>
     {
         _musicController.audioSource_Brick.PlayOneShot(_musicController.audioClip_RemoveBrick);
     }
-    public void PlayerBackGround()
+    public void TurnOffMusic()
     {
-        //_musicController.audioSource_BackGround.Play();
+        _musicController.audioSource_Brick.volume = 0;
+        GameManager.Instance.SetSoundSave(0);
+    }
+    public void TurnOnMusic()
+    {
+        _musicController.audioSource_Brick.volume = 1;
+        GameManager.Instance.SetSoundSave(1);
     }
 }

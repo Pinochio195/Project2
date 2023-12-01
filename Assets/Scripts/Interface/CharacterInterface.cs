@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface CharacterInterface
 {
-    void AddBrick(Transform _brick, List<GameObject> trails, ParticleSystem trail);
+    void AddBrick(AddBrick addBrick, MeshRenderer mesh, List<GameObject> trails, ParticleSystem trail);
     void RemoveBrick();
     void ClearBrick();
 }

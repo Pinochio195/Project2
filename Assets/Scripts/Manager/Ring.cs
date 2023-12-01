@@ -37,6 +37,7 @@ namespace Ring
         };
 
         [ChangeColorLabel(0.2f, 1, 1)] public Color _colorPlayer;
+        [ChangeColorLabel(0.2f, 1, 1)] public Material _materialPlayer;
 
         [HeaderTextColor(0.2f, .7f, .8f, headerText = "Move Brick Player")]
         [ChangeColorLabel(0.2f, 1, 1)] public int inDexDotWeen;
@@ -50,21 +51,22 @@ namespace Ring
 
         [ChangeColorLabel(0.2f, 1, 1)] public NavMeshAgent agent;
         [ChangeColorLabel(0.2f, 1, 1)] public Animator _animator;
-        public enum BotState
-        { Idle, MoveToTarget }
         public enum BotName
         {  Blue, Green, Red ,All}
 
-        [ChangeColorLabel(0.2f, 1, 1)] public BotState currentState;
 
         [ChangeColorLabel(0.2f, 1, 1)] public BotName botName;
         [HeaderTextColor(0.2f, .7f, .8f, headerText = "Move Brick Player")]
         [ChangeColorLabel(0.2f, 1, 1)] public int inDexDotWeen;
-        [ChangeColorLabel(0.2f, 1, 1)] public List<GameObject> _listBringBrick;
+        [ChangeColorLabel(0.2f, 1, 1)] public List<AddBrick> _listBringBrick;
         [ChangeColorLabel(0.2f, 1, 1)] public Transform _parentListTransform;
         [HeaderTextColor(0.2f, .7f, .8f, headerText = "Color")]
         [ChangeColorLabel(0.2f, 1, 1)] public Color _colorPlayer;
+        [ChangeColorLabel(0.2f, 1, 1)] public Material _materialPlayer;
         public List<Material> _listMaterial;
+        [HeaderTextColor(0.2f, .7f, .8f, headerText = "Check fall down")]
+        public bool isCheckFallDown;//bật biến này lên để ngã ra luôn
+        public string _nameOldTag;//lưu tên tag cũ để bật lại khi run
     }
 
     [Serializable]

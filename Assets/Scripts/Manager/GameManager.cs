@@ -46,7 +46,14 @@ public class GameManager : RingSingleton<GameManager>
     #endregion Scene
 
     #region Save
-
+    public void OnVibrate()
+    {
+        PlayerPrefs.SetInt(Settings.Vibrate, 1);
+    }
+    public void OffVibrate()
+    {
+        PlayerPrefs.SetInt(Settings.Vibrate, 0);
+    }
     //sound
     public float GetSoundSave()
     {

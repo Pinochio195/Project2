@@ -1,7 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Sound_Vibrate : BaseClickButton
+public class VibrateCheck : BaseClickButton
 {
     [SerializeField] private Sprite _spriteOn;
     [SerializeField] private Sprite _spriteOff;
@@ -13,10 +15,14 @@ public class Sound_Vibrate : BaseClickButton
         if (!isCheck)
         {
             _image.sprite = _spriteOff;
+            GameManager.Instance.OnVibrate();
+            MusicManager.Instance.TurnOffMusic();
         }
         else
         {
             _image.sprite = _spriteOn;
+            MusicManager.Instance.TurnOnMusic();
+            GameManager.Instance.OffVibrate();
         }
         isCheck = !isCheck;
     }
