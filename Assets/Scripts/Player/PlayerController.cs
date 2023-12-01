@@ -33,7 +33,7 @@ public class PlayerController : RingSingleton<PlayerController>, CharacterInterf
             addbrick._rigidbody.useGravity = false;
             addbrick._rigidbody.isKinematic = true;
             addbrick._rigidbody.transform.localEulerAngles = new Vector3(0, 90, 0);
-            _playerController._listBringBrick.Add(addbrick._rigidbody.gameObject);
+            _playerController._listBringBrick.Add(addbrick);
             MusicManager.Instance.PlayAudio_AddBrick();
             Vibrate();
             trail.Play();

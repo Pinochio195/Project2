@@ -25,11 +25,11 @@ TagManager:
   - CheckCharacter
   - BrickForGround
   - BrickToFloor
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Blue
+  - Green
+  - Red
+  - BotGreen
+  - BotRed
   - 
   - 
   - 

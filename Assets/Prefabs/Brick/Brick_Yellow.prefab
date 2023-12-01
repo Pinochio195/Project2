@@ -358,6 +358,7 @@ MonoBehaviour:
   - {fileID: 3593343353178667273}
   trail: {fileID: 6045631551265079643}
   mesh: {fileID: 8460616539123885563}
+  collider: {fileID: 8112498438171518357}
   _rigidbody: {fileID: 2665802264452879760}
   isCheck: 0
   color: 4

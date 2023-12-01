@@ -20,6 +20,7 @@ namespace Ring
         [ChangeColorLabel(0.2f, 1, 1)] public string nameScene;
         [ChangeColorLabel(0.2f, 1, 1)] public Transform _startPosition;
         [ChangeColorLabel(0.2f, 1, 1)] public Transform _finishDestination;
+        [ChangeColorLabel(0.2f, 1, 1)] public Transform meshRotation;
         [HeaderTextColor(0.2f, .7f, .8f, headerText = "Color")]
         public List<Material> _listMaterial;
     }
@@ -28,7 +29,7 @@ namespace Ring
     public class Player_Manager
     {
         [ChangeColorLabel(0.2f, 1, 1)] public Rigidbody _playerRigidbody;
-        [ChangeColorLabel(0.2f, 1, 1)] public List<GameObject> _listBringBrick;
+        [ChangeColorLabel(0.2f, 1, 1)] public List<AddBrick> _listBringBrick;
         [ChangeColorLabel(0.2f, 1, 1)] public Transform _parentListTransform;
 
         public enum Color

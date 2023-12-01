@@ -16,16 +16,19 @@ public class RemoveBrick : MonoBehaviour
             if (PlayerController.Instance._playerController._colorPlayer == Ring.Player_Manager.Color.Blue)
             {
                 _meshRenderer.material = GameManager.Instance._gameController._listMaterial[0];
+                gameObject.layer = LayerMask.NameToLayer("Blue");
             }
             else if (PlayerController.Instance._playerController._colorPlayer == Ring.Player_Manager.Color.Green)
             {
                 _meshRenderer.material = GameManager.Instance._gameController._listMaterial[1];
+                gameObject.layer = LayerMask.NameToLayer("Green");
             }
             else if (PlayerController.Instance._playerController._colorPlayer == Ring.Player_Manager.Color.Red)
             {
                 _meshRenderer.material = GameManager.Instance._gameController._listMaterial[3];
+                gameObject.layer = LayerMask.NameToLayer("Red");
             }
-            _collider.enabled = false;//Attention
+            //_collider.enabled = false;//Attention
             PlayerController.Instance.RemoveBrick();
         }
         else if (collision.gameObject.CompareTag(Settings.Tag_Bot1))
@@ -33,16 +36,19 @@ public class RemoveBrick : MonoBehaviour
             if (GameManager.Instance._gameController._listBotController[0]._botController.botName.ToString().Equals( Ring.Player_Manager.Color.Blue.ToString()))
             {
                 _meshRenderer.material = GameManager.Instance._gameController._listMaterial[0];
+                gameObject.layer = LayerMask.NameToLayer("Blue");
             }
             else if (GameManager.Instance._gameController._listBotController[0]._botController.botName.ToString().Equals(Ring.Player_Manager.Color.Green.ToString()))
             {
                 _meshRenderer.material = GameManager.Instance._gameController._listMaterial[1];
+                gameObject.layer = LayerMask.NameToLayer("Green");
             }
             else if (GameManager.Instance._gameController._listBotController[0]._botController.botName.ToString().Equals(Ring.Player_Manager.Color.Red.ToString()))
             {
                 _meshRenderer.material = GameManager.Instance._gameController._listMaterial[3];
+                gameObject.layer = LayerMask.NameToLayer("Red");
             }
-            _collider.enabled = false;//Attention
+            //_collider.enabled = false;//Attention
             GameManager.Instance._gameController._listBotController[0].RemoveBrick();
         }
     }

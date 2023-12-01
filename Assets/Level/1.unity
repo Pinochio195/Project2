@@ -418,6 +418,7 @@ MonoBehaviour:
   rb: {fileID: 104435213}
   _meshPlayer: {fileID: 543450651807851021}
   _animator: {fileID: 1934312937}
+  isUsing: 0
 --- !u!114 &104435215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2096,7 +2097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1d834e21c83184daa7a96c05e5e652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myButton: {fileID: 0}
+  myButton: {fileID: 563527943}
 --- !u!1 &593456923
 GameObject:
   m_ObjectHideFlags: 0
@@ -2450,7 +2451,7 @@ GameObject:
   - component: {fileID: 635588771}
   - component: {fileID: 635588775}
   - component: {fileID: 635588776}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Bot
   m_TagString: Bot1
   m_Icon: {fileID: 0}
@@ -2857,6 +2858,7 @@ MonoBehaviour:
     nameScene: 
     _startPosition: {fileID: 0}
     _finishDestination: {fileID: 1553609829}
+    meshRotation: {fileID: 543450651807851021}
     _listMaterial:
     - {fileID: 2100000, guid: 287827d5da0b58546a23b30c6c3d6251, type: 2}
     - {fileID: 2100000, guid: 01c49c62342581c459748800aee651a1, type: 2}
@@ -4151,7 +4153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5070cdadf5da5d4aa70aa5e045f27aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myButton: {fileID: 0}
+  myButton: {fileID: 1197348853}
 --- !u!1 &1200388018
 GameObject:
   m_ObjectHideFlags: 0
@@ -5444,7 +5446,8 @@ Transform:
   m_LocalPosition: {x: 0.08099997, y: 17.961739, z: 158.802}
   m_LocalScale: {x: 1.7513, y: 1.7513, z: 0.3090519}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1624238709}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1553609830
@@ -5459,6 +5462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeeab1dc577f5d5468099a403c2eb1f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _winPosition: {fileID: 1624238709}
+  _stickPlayer: {fileID: 104435214}
 --- !u!1 &1560143798
 GameObject:
   m_ObjectHideFlags: 0
@@ -5952,6 +5957,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1624238708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1624238709}
+  m_Layer: 0
+  m_Name: Finish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1624238709
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624238708}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 5.46}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1553609829}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1666871944
 GameObject:
   m_ObjectHideFlags: 0

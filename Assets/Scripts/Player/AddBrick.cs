@@ -6,6 +6,7 @@ public class AddBrick : MonoBehaviour
     [SerializeField] private List<GameObject> trails;
     [SerializeField] private ParticleSystem trail;
     [SerializeField] public MeshRenderer mesh;
+    [SerializeField] public Collider collider;
     public Rigidbody _rigidbody;
     public bool isCheck;
 
